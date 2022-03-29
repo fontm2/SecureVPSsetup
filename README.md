@@ -41,8 +41,8 @@ in a new terminal on your local machine, login via ssh (your ssh-key password is
 
 on your remote server: to secure the ssh logins, we need to change some parts in the sshd_config file on your remote machine
 
-```sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.myback```
-```sudo nano /etc/ssh/sshd_config```
+````sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.myback
+sudo nano /etc/ssh/sshd_config````
 
 on your remote server: The following fields need to be uncommented and or changed to (we set a new ssh port as most attempts to login via ssh will try port 22 first. the new port should be a high number port not used by aptos like 45789. Note: firewall such as ufw should not be active here. If it is, first allow the new ssh port before you you logout of your remote server): 
 ```Port 45789```
