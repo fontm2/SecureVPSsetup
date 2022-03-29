@@ -4,13 +4,15 @@ login to your newly setup server via ssh (most provider have ssh-server installe
 
 ```ssh root@xxx.xxx.xxx.xxx```
 
-## Change password
+### Change password
 
 On the remote server, change the password set by either you or the provider
 
 ```passwd root```
 
 to check if new password login works, open a 2nd terminal on login (do not close first terminal as it is a backup connection)
+
+### Add new user
 
 On the remote server, for security reasons add a non-root user
 
@@ -30,6 +32,8 @@ log out and login with new user
 On the remote server, check which groups you belong to
 
 ```groups```
+
+### Set up ssh
 
 set up ssh-keys for more secure logins on your local machine. If you already have some ssh-keys, do store the new ones under different names as otherwise you will loose your keys and can not connect to servers you previously used. If those are your first ssh-keys, use default directory and name and set a password.
 
@@ -82,6 +86,7 @@ on your remote server: if something went wrong, undo the changes by coping back 
 sudo cp /etc/ssh/sshd_config.myback /etc/ssh/sshd_config
 sudo service ssh restart
 ````
+### Update system
 
 on your remote server: update the system
 
@@ -90,6 +95,8 @@ sudo apt-get update
 sudo apt-get ugrade
 sudo reboot
 ````
+
+### Install NTP
 
 on your remote server: Some blockchain nodes are sensitive to time drifts, so NTP could be installed
 
@@ -101,6 +108,8 @@ sudo ntpdate pool.ntp.org
 sudo service ntp start
 sudo systemctl status ntp
 ````
+
+### Install Fail2Ban
 
 on your remote server: Install Fail2Ban to block repeating incomming connection attempts
 
@@ -149,6 +158,7 @@ sudo cp /etc/fail2ban/jail.myback /etc/fail2ban/jail.local
 sudo service fail2ban stop
 sudo systemctl status fail2ban
 ````
+### Set up firewall
 
 on your remote server: update firewall (make sure to allow the new ssh port 45789. 10000 is used for webmin later. also replace VNC by your VNC port
 ````
@@ -164,6 +174,8 @@ sudo ufw logging on
 sudo ufw enable
 sudo ufw status
 ````
+
+### Install Webmin
 
 on your remote server: Install Webmin for remote surveilance
 ````
@@ -181,6 +193,8 @@ on your local machine: open a browser and connect to:
 ```http://your_server_name:10000```
 
 login with youre non-root user. Note, you can setup webmin to work with https if you want
+
+### Install Docker / Docker-compose
 
 on your remote machine: install docker and docker-compose
 ````
@@ -209,6 +223,8 @@ check the installations. Note, no need to use sudo infront of docker as we added
 docker run hello-world
 docker–compose --version
 ````
+
+### Install Bashtop
 
 on your remote server: install Bashtop for system resource checking
 
