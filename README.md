@@ -16,8 +16,8 @@ On the remote server, for security reasons add a non-root user
 
 On the remote server, add this user to the sudoers and allow to access system logs
 
-```usermod -aG sudo aptos_user
-usermod -aG systemd-journal aptos_user```
+```usermod -aG sudo aptos_user```
+```usermod -aG systemd-journal aptos_user```
 
 log out and login with new user 
 
@@ -41,20 +41,20 @@ in a new terminal on your local machine, login via ssh (your ssh-key password is
 
 on your remote server: to secure the ssh logins, we need to change some parts in the sshd_config file on your remote machine
 
-```sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.myback
-sudo nano /etc/ssh/sshd_config```
+```sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.myback```
+```sudo nano /etc/ssh/sshd_config```
 
 on your remote server: The following fields need to be uncommented and or changed to (we set a new ssh port as most attempts to login via ssh will try port 22 first. the new port should be a high number port not used by aptos like 45789. Note: firewall such as ufw should not be active here. If it is, first allow the new ssh port before you you logout of your remote server): 
-```Port 45789
-PermitRootLogin no
-MaxAuthTries 3
-PubkeyAuthentication yes
-AuthorizedKeysFile .ssh/authorized_keys
-PasswordAuthentication no
-PermitEmptyPasswords no
-AllowAgentForwarding no
-AllowTcpForwarding no
-X11Forwarding no```
+```Port 45789```
+```PermitRootLogin no```
+```MaxAuthTries 3```
+```PubkeyAuthentication yes```
+```AuthorizedKeysFile .ssh/authorized_keys```
+```PasswordAuthentication no```
+```PermitEmptyPasswords no```
+```AllowAgentForwarding no```
+```AllowTcpForwarding no```
+```X11Forwarding no```
 
 on your remote server: Test the new ssh configuration
 
@@ -70,30 +70,30 @@ logout and login again
 
 on your remote server: if something went wrong, undo the changes by coping back the backup-file
 
-```sudo cp /etc/ssh/sshd_config.myback /etc/ssh/sshd_config
-sudo service ssh restart```
+```sudo cp /etc/ssh/sshd_config.myback /etc/ssh/sshd_config```
+```sudo service ssh restart```
 
 on your remote server: update the system
 
-```sudo apt-get update
-sudo apt-get ugrade
-sudo reboot```
+```sudo apt-get update```
+```sudo apt-get ugrade```
+```sudo reboot```
 
 on your remote server: Some blockchain nodes are sensitive to time drifts, so NTP could be installed
 
-```sudo apt-get update
-sudo apt-get install ntp ntpdate
-sudo service ntp stop
-sudo ntpdate pool.ntp.org
-sudo service ntp start
-sudo systemctl status ntp```
+```sudo apt-get update```
+```sudo apt-get install ntp ntpdate```
+```sudo service ntp stop```
+```sudo ntpdate pool.ntp.org```
+```sudo service ntp start```
+```sudo systemctl status ntp```
 
 on your remote server: Install Fail2Ban to block repeating incomming connection attempts
 
-```sudo apt-get update
-sudo apt-get install fail2ban
-sudo cp /etc/fail2ban/jail.conf
-/etc/fail2ban/jail.local```
+```sudo apt-get update```
+```sudo apt-get install fail2ban```
+```sudo cp /etc/fail2ban/jail.conf```
+```/etc/fail2ban/jail.local```
 
 on your remote server: backup the file
 
@@ -105,27 +105,27 @@ on your remote server: edit the file (as we changed default ssh port)
 
 and change the 3 ssh ports from "port ssh" to "port 45789". It will look sth like: 
 
-```port = 45789
-logpath = %(sshd_log)s
-backend = %(sshd_backend)s
-[dropbear]
-Port = 45789
-logpath = %(dropbear_log)s
-backend = %(dropbear_backend)s
-[selinux-ssh]
-port = 45789
-logpath = %(auditd_log)s```
+```port = 45789```
+```logpath = %(sshd_log)s```
+```backend = %(sshd_backend)s```
+```[dropbear]```
+```Port = 45789```
+```logpath = %(dropbear_log)s```
+```backend = %(dropbear_backend)s```
+```[selinux-ssh]```
+```port = 45789```
+```logpath = %(auditd_log)s```
 
 on your remote sever: start Fail2Ban
-```sudo systemctl enable fail2ban
-sudo service fail2ban start
-sudo systemctl status fail2ban```
+```sudo systemctl enable fail2ban```
+```sudo service fail2ban start```
+```sudo systemctl status fail2ban```
 
 on your remote server: if something went wrong, undo everything by
 
-```sudo cp /etc/fail2ban/jail.myback /etc/fail2ban/jail.local
-sudo service fail2ban stop
-sudo systemctl status fail2ban```
+```sudo cp /etc/fail2ban/jail.myback /etc/fail2ban/jail.local```
+```sudo service fail2ban stop```
+```sudo systemctl status fail2ban```
 
 on your remote server: update firewall (make sure to allow the new ssh port 45789. 10000 is used for webmin later. also replace VNC by your VNC port
 ```sudo ufw disable
