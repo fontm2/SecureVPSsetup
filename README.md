@@ -4,6 +4,8 @@ login to your newly setup server via ssh (most provider have ssh-server installe
 
 ```ssh root@xxx.xxx.xxx.xxx```
 
+## Change password
+
 On the remote server, change the password set by either you or the provider
 
 ```passwd root```
