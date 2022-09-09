@@ -247,7 +247,7 @@ sudo apt-get update
 sudo apt-get upgrade
 ````
 
-### Usefull commands and tools
+### Usefull commands for beginner node-ops
 
 #### ls
 
@@ -309,11 +309,23 @@ rm is used to remove files and directories
 | Command | Effect |
 | --- | --- |
 | rm sample.txt | remove the file sample.txt |
-| rm -r /home/alice/samle_dir | remove the directory samle_dir |
+| rm -r samle_dir | remove the directory samle_dir |
 
 Hint: if you do not have permession to delete a file, either change your permission or use sudo
 
+#### chmod
 
+chmod is used to change file permission. For most tutorials to install a aptos tools, this command will be given due its vast amount of options.
+
+#### find
+
+find is used to search your filesystem for a certain file
+
+| Command | Effect |
+| --- | --- |
+| sudo find / -name sample.txt | this will use root-privileges to search for a file named sample.txt through your whole filesystem |
+
+### Usefull tools for beginner node-ops
 
 #### Text editors
 
@@ -324,3 +336,24 @@ The command below will create a new file called sample.txt in your current direc
 nano sample.txt
 ````
 To exit the editor press ctr+x and chose to either save or discard changes.
+
+#### netstat
+
+Use netstat to check if you have services listening on your ports
+
+````
+sudo netstat -tunlp | grep LISTEN
+````
+
+#### tmux
+
+tmux is a terminal multiplexer. You can use it to run tasks in the background. Usually when you run binaries in your terminal, the will abort as soon as you terminate the terminal session. You can use tmux to run those binaries in the backround.
+
+| Command | Effect |
+| --- | --- |
+| tmux new -s session_1 | starts a detachable bash session named session_1 |
+| ctrl+b "up"-key | allows you to scroll within the detachable session |
+| esc | exits the scroll-mode |
+| ctrl+b d | detaches the session without terminating the process that currently run |
+| tmux a -t session_1 | reattaches the session named session_1 |
+| ctrl+b "up"-key | allows you to scroll within the detachable session |
