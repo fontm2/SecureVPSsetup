@@ -283,6 +283,38 @@ mkdir creates a new directory
 | mkdir new_dir | creates new_dir in the current directory |
 | mkdir /home/alice/Documents/new_dir | creates a new_dir at /home/alice/Documents/new_dir |
 
+#### cp
+
+cp is used to copy contend from one location to another. You can think of it as copy and past.
+
+| Command | Effect |
+| --- | --- |
+| cp /home/alice/sample.txt /home/alice/Documents | copy the file sample.txt to Documents |
+| cp /home/alice/samle_dir /home/alice/Documents | copy the directory samle_dir to Documents |
+
+#### mv
+
+mv is used to move files from one location to another. You can think of it as cut and past.
+
+| Command | Effect |
+| --- | --- |
+| mv /home/alice/sample.txt /home/alice/Documents | move the file sample.txt to Documents |
+| mv /home/alice/samle_dir /home/alice/Documents | move the directory samle_dir to Documents |
+| mv /home/alice/old_filename.txt /home/alice/new_filename.txt | rename the file old_filename.txt to new_filename.txt |
+
+#### rm
+
+rm is used to remove files and directories
+
+| Command | Effect |
+| --- | --- |
+| rm sample.txt | remove the file sample.txt |
+| rm -r /home/alice/samle_dir | remove the directory samle_dir |
+
+Hint: if you do not have permession to delete a file, either change your permission or use sudo
+
+
+
 #### Text editors
 
 One of the simples text editors is nano. You can use nano to create a new or edit and existing file. You can select different endings such as .txt, .yml, .yaml, .json, .py, etc.
