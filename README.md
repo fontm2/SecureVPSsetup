@@ -272,3 +272,4 @@ The command below will create a new file called sample.txt in your current direc
 ````
 nano sample.txt
 ````
+To exit the editor press ctr+x and chose to either save or discard changes.
