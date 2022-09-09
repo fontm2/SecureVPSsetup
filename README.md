@@ -247,7 +247,7 @@ sudo apt-get update
 sudo apt-get upgrade
 ````
 
-### Usefull commands for beginner node-ops
+### Useful commands for beginner node-ops
 
 #### ls
 
@@ -258,11 +258,11 @@ ls is used to list content of a certain directory
 | ls | list all visible content in the current directory |
 | ls /home/alice/Documents | list all visible content at /home/alice/Documents |
 | ls -a | lists also hidden content |
-| ls -l | lists aditional information such as owner of files |
+| ls -l | lists additional information such as owner of files |
 
 #### cd
 
-"cd" is used to navigate through your file sysetm.
+"cd" is used to navigate through your file system.
 
 | Command | Effect |
 | --- | --- |
@@ -273,7 +273,7 @@ ls is used to list content of a certain directory
 
 #### pwd
 
-pwd returns you the absolut path of your current location
+pwd returns you the absolute path of your current location
 
 #### mkdir
 
@@ -311,11 +311,11 @@ rm is used to remove files and directories
 | rm sample.txt | remove the file sample.txt |
 | rm -r samle_dir | remove the directory samle_dir |
 
-Hint: if you do not have permession to delete a file, either change your permission or use sudo
+Hint: if you do not have permission to delete a file, either change your permission or use sudo
 
 #### chmod
 
-chmod is used to change file permission. For most tutorials to install a aptos tools, this command will be given due its vast amount of options.
+chmod is used to change file permission. For most tutorials to install an aptos tools, this command will be given due to its vast amount of options.
 
 #### find
 
@@ -325,12 +325,12 @@ find is used to search your filesystem for a certain file
 | --- | --- |
 | sudo find / -name sample.txt | this will use root-privileges to search for a file named sample.txt through your whole filesystem |
 
-### Usefull tools for beginner node-ops
+### Useful tools for beginner node-ops
 
 #### Text editors
 
-One of the simples text editors is nano. You can use nano to create a new or edit and existing file. You can select different endings such as .txt, .yml, .yaml, .json, .py, etc.
-The command below will create a new file called sample.txt in your current directory or will open that file if it already exists in your current derectory.
+One of the simplest text editors is nano. You can use nano to create a new or edit and existing file. You can select different endings such as .txt, .yml, .yaml, .json, .py, etc.
+The command below will create a new file called sample.txt in your current directory, or will open that file if it already exists in your current directory.
 
 ````
 nano sample.txt
@@ -347,7 +347,7 @@ sudo netstat -tunlp | grep LISTEN
 
 #### tmux
 
-tmux is a terminal multiplexer. You can use it to run tasks in the background. Usually when you run binaries in your terminal, the will abort as soon as you terminate the terminal session. You can use tmux to run those binaries in the backround.
+tmux is a terminal multiplexer. You can use it to run tasks in the background. When you run binaries in your terminal, they will abort as soon as you close the terminal. You can use tmux to run those binaries in the background.
 
 | Command | Effect |
 | --- | --- |
