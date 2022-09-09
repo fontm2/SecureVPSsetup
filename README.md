@@ -1,4 +1,4 @@
-This is small Guide to setup a secure (relative, because as soon as you expose you to the outside, there might be some attacks). Kudos to PitbullCH, a fellow node-op on a different project who shared most of this information (This is a subset of the instructions). This guide is written to be used for Linux-OS on both, host machine and remote server (Debian).
+This is small Guide to setup a secure (relative, because as soon as you expose you to the outside, there might be some attacks). Kudos to PitbullCH, a fellow node-op on a different project who shared most of the VPS setup information (This is a subset of the instructions). This guide is written to be used for Linux-OS on both, host machine and remote server (Debian).
 
 login to your newly setup server via ssh (most provider have ssh-server installed on your machine)
 
