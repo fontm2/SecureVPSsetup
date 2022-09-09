@@ -249,7 +249,7 @@ sudo apt-get upgrade
 
 ### Usefull commands and tools
 
-##cd
+#### cd
 
 "cd" is used to navigate through your file sysetm.
 
