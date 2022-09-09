@@ -339,10 +339,17 @@ To exit the editor press ctr+x and chose to either save or discard changes.
 
 #### netstat
 
-Use netstat to check if you have services listening on your ports
+Use netstat to check if you have services listening on your ports. 
 
 ````
 sudo netstat -tunlp | grep LISTEN
+````
+
+You can install netstat by running:
+
+````
+sudo apt-get update
+sudo apt install net-tools
 ````
 
 #### tmux
@@ -357,3 +364,10 @@ tmux is a terminal multiplexer. You can use it to run tasks in the background. W
 | ctrl+b d | detaches the session without terminating the process that currently run |
 | tmux a -t session_1 | reattaches the session named session_1 |
 | ctrl+b "up"-key | allows you to scroll within the detachable session |
+
+You can install tmux by running:
+
+````
+sudo apt-get update
+sudo apt-get install tmux
+````
