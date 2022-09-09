@@ -236,4 +236,26 @@ sudo apt-get install bashtop
 bashtop
 ````
 
-Last note: Periodically maintain your remote server
+### Server maintenance
+
+Periodically maintain your remote server
+
+````
+sudo apt update
+sudo apt upgrade
+sudo apt-get update
+sudo apt-get upgrade
+````
+
+### Usefull commands and tools
+
+##cd
+
+"cd" is used to navigate through your file sysetm.
+
+| Command | Effect |
+| --- | --- |
+| cd | navigate to your home directory |
+| cd ~ | navigate to your home directory |
+| cd sample_dir | relative navigation from you current directory to "sample_dir" |
+| cd /usr/local | navigation independent of your current directory |
