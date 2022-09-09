@@ -249,6 +249,17 @@ sudo apt-get upgrade
 
 ### Usefull commands and tools
 
+#### ls
+
+ls is used to list content of a certain directory
+
+| Command | Effect |
+| --- | --- |
+| ls | list all visible content in the current directory |
+| ls /home/alice/Documents | list all visible content at /home/alice/Documents |
+| ls -a | lists also hidden content |
+| ls -l | lists aditional information such as owner of files |
+
 #### cd
 
 "cd" is used to navigate through your file sysetm.
@@ -263,6 +274,14 @@ sudo apt-get upgrade
 #### pwd
 
 pwd returns you the absolut path of your current location
+
+#### mkdir
+
+mkdir creates a new directory 
+| Command | Effect |
+| --- | --- |
+| mkdir new_dir | creates new_dir in the current directory |
+| mkdir /home/alice/Documents/new_dir | creates a new_dir at /home/alice/Documents/new_dir |
 
 #### Text editors
 
