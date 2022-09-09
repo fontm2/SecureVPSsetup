@@ -259,3 +259,16 @@ sudo apt-get upgrade
 | cd ~ | navigate to your home directory |
 | cd sample_dir | relative navigation from you current directory to "sample_dir" |
 | cd /usr/local | navigation independent of your current directory |
+
+#### pwd
+
+pwd returns you the absolut path of your current location
+
+#### Text editors
+
+One of the simples text editors is nano. You can use nano to create a new or edit and existing file. You can select different endings such as .txt, .yml, .yaml, .json, .py, etc.
+The command below will create a new file called sample.txt in your current directory or will open that file if it already exists in your current derectory.
+
+````
+nano sample.txt
+````
