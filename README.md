@@ -16,18 +16,18 @@ to check if new password login works, open a 2nd terminal on login (do not close
 
 On the remote server, for security reasons add a non-root user
 
-```adduser aptos_user```
+```adduser your_user```
 
 On the remote server, add this user to the sudoers and allow to access system logs
 
 ````
-usermod -aG sudo aptos_user
-usermod -aG systemd-journal aptos_user
+usermod -aG sudo your_user
+usermod -aG systemd-journal your_user
 ````
 
 log out and login with new user 
 
-```ssh aptos_user@xxx.xxx.xxx.xxx```
+```ssh your_user@xxx.xxx.xxx.xxx```
 
 On the remote server, check which groups you belong to
 
@@ -41,11 +41,11 @@ set up ssh-keys for more secure logins on your local machine. If you already hav
 
 copy the public key to your remote server 
 
-```ssh-copy-id aptos_user@xxx.xxx.xxx.xxx```
+```ssh-copy-id your_user@xxx.xxx.xxx.xxx```
 
 in a new terminal on your local machine, login via ssh (your ssh-key password is needed)
 
-```ssh aptos_user@xxx.xxx.xxx.xxx```
+```ssh your_user@xxx.xxx.xxx.xxx```
 
 on your remote server: to secure the ssh logins, we need to change some parts in the sshd_config file on your remote machine
 
@@ -54,9 +54,9 @@ sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.myback
 sudo nano /etc/ssh/sshd_config
 ````
 
-on your remote server: The following fields need to be uncommented and or changed to (we set a new ssh port as most attempts to login via ssh will try port 22 first. the new port should be a high number port not used by aptos like 45789. Note: firewall such as ufw should not be active here. If it is, first allow the new ssh port before you you logout of your remote server): 
+on your remote server: The following fields need to be uncommented and or changed to (we set a new ssh port as most attempts to login via ssh will try port 22 first. the new port should be a high number port not used by the application you will run like 45453. Note: firewall such as ufw should not be active here. If it is, first allow the new ssh port before you you logout of your remote server): 
 ````
-Port 45789
+Port 45453
 PermitRootLogin no
 MaxAuthTries 3
 PubkeyAuthentication yes
@@ -78,7 +78,7 @@ on your remote server: restart the ssh service
 
 logout and login again 
 
-```ssh aptos_user@xxx.xxx.xxx.xxx -p 45789```
+```ssh your_user@xxx.xxx.xxx.xxx -p 45789```
 
 on your remote server: if something went wrong, undo the changes by coping back the backup-file
 
@@ -128,18 +128,18 @@ on your remote server: edit the file (as we changed default ssh port)
 
 ```sudo nano /etc/fail2ban/jail.local```
 
-and change the 3 ssh ports from "port ssh" to "port 45789". It will look sth like: 
+and change the 3 ssh ports from "port ssh" to "port 45453". It will look sth like: 
 
 ````
-port = 45789
+port = 45453
 logpath = %(sshd_log)s
 backend = %(sshd_backend)s
 [dropbear]
-Port = 45789
+Port = 45453
 logpath = %(dropbear_log)s
 backend = %(dropbear_backend)s
 [selinux-ssh]
-port = 45789
+port = 45453
 logpath = %(auditd_log)s
 ````
 
@@ -160,24 +160,22 @@ sudo systemctl status fail2ban
 ````
 ### Set up firewall
 
-on your remote server: update firewall (make sure to allow the new ssh port 45789. 10000 is used for webmin later. also replace VNC by your VNC port
+on your remote server: update firewall (make sure to allow the new ssh port 45453. 10000 is used for webmin later (optional). also replace VNC by your VNC port
 ````
 sudo ufw disable
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
-sudo ufw allow 22
-sudo ufw allow 45789
+sudo ufw allow 45453
 sudo ufw allow VNC
 sudo ufw allow 10000
-sudo ufw allow 6180
 sudo ufw logging on
 sudo ufw enable
 sudo ufw status
 ````
 
-### Install Webmin
+### Install Webmin (OPTIONAL)
 
-on your remote server: Install Webmin for remote surveilance
+on your remote server: Install Webmin for remote surveilance. Do not forget to activate 2FA
 ````
 sudo apt-get update
 sudo apt-get install gpg-agent apt-transport-https software-properties-common
@@ -211,7 +209,7 @@ echo \
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io
 sudo groupadd docker
-sudo usermod -aG docker aptos_user
+sudo usermod -aG docker your_user
 
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
@@ -315,7 +313,7 @@ Hint: if you do not have permission to delete a file, either change your permiss
 
 #### chmod
 
-chmod is used to change file permission. For most tutorials to install an aptos tools, this command will be given due to its vast amount of options.
+chmod is used to change file permission.
 
 #### find
 
