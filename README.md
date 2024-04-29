@@ -166,8 +166,8 @@ sudo ufw disable
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw allow 45453
-sudo ufw allow VNC
-sudo ufw allow 10000
+sudo ufw allow VNC (optional)
+sudo ufw allow 10000 (optional)
 sudo ufw logging on
 sudo ufw enable
 sudo ufw status
